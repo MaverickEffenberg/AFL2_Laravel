@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <a class="navbar-brand brand" href="{{ url('/') }}">My Carnivlora</a>
+    <a class="navbar-brand brand" href="{{ url('/') }}">
+        {{ $title ?? 'My Carnivlora' }}
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>

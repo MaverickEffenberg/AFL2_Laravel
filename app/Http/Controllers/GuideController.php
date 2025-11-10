@@ -11,6 +11,11 @@ class GuideController extends Controller
     {
         $plants = Guide::all();
         $selectedPlant = $request->input('plant', '');
-        return view('guide', compact('plants', 'selectedPlant'));
+
+        return view('guide', [
+            'title' => 'Guide',
+            'plants' => $plants,
+            'selectedPlant' => $selectedPlant
+        ]);
     }
 }

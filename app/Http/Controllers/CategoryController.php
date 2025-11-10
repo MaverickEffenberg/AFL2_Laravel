@@ -12,14 +12,17 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-       
         $selectedFamily = $request->input('family');
 
-        
-        $plants = $selectedFamily 
+        $plants = $selectedFamily
             ? Plant::where('family', $selectedFamily)->get()
             : Plant::all();
 
-        return view('store', compact('plants', 'categories', 'selectedFamily'));
+        return view('store', [
+            'title' => 'Store',
+            'plants' => $plants,
+            'categories' => $categories,
+            'selectedFamily' => $selectedFamily
+        ]);
     }
 }

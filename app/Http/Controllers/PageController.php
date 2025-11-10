@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-//use App\Models\Meal;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index(){
-        
-        return view('home');
+    public function index()
+    {
+        return view('home', [
+            'title' => 'My Carnivlora'
+        ]);
     }
 
-    public function about(){
-        return view('about');
+    public function about()
+    {
+        return view('about', [
+            'title' => 'About Us'
+        ]);
     }
-
 }
