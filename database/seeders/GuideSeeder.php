@@ -34,6 +34,7 @@ class GuideSeeder extends Seeder
             'name' => 'Butterwort',
             'guide' => 'Care Guide: Butterworts (Lentibulariaceae) grow well in bright, indirect sunlight. Keep soil moist but well-draining, using a mix of peat moss and sand. Their sticky leaves catch small insects for nutrients; occasional feeding indoors is optional. Ideal temperatures are 18-25°C (65-77°F). Protect from frost and extreme heat.',
         ],
+        
     ]);
 }
 
