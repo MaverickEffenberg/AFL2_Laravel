@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
 
+Route::get('/admin', [PlantController::class, 'index'])->name('admin'); //homepage
 Route::get('/', [PlantController::class, 'home'])->name('home'); //homepage
 Route::get('/about', [PageController::class, 'about'])->name('about'); //about us page
 Route::get('/store', [PlantController::class, 'shop'])->name('store'); //store page

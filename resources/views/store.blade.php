@@ -29,7 +29,7 @@
           <img src="{{ $plant->image_url }}" class="card-img-top" alt="{{ $plant->name }}">
           <div class="card-body">
             <h5 class="card-title">{{ $plant->name }}</h5>
-            <p class="text-muted">Price: IDR{{ $plant->price }}</p>
+            <p class="text-muted">Rp {{ $plant->price }}</p>
             <p class="text-muted">Stock: {{ $plant->stock }}</p>
             <a href="#"
                class="btn btn-sm {{ $plant->stock > 0 ? 'btn-success' : 'btn-secondary disabled' }}"

@@ -9,6 +9,11 @@
 
     <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ml-auto">
+            <!-- New button on the left of Home -->
+            <li class="nav-item mr-2">
+                <a class="btn btn-primary btn-sm" href="{{ route('admin') }}">Admin page</a>
+            </li>
+
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/store') }}">Store</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/guide') }}">Guide</a></li>

@@ -12,8 +12,8 @@
             <th>Name</th>
             <th>Family</th>
             <th>Image</th>
-            <th>Price</th>
             <th>Stock</th>
+            <th>Price</th>
             <th>Actions</th>
         </tr>
     </thead>
