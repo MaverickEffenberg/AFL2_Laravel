@@ -10,6 +10,10 @@ class Plant extends Model
     /** @use HasFactory<\Database\Factories\PlantFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'family', 'price', 'stock', 'image_url'];
+    protected $fillable = ['name', 'category_id', 'price', 'stock', 'image_url'];
+    public function category()
+{
+    return $this->belongsTo(Category::class); // a plant belongs to a category
+}
 
 }

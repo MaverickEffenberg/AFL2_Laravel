@@ -15,14 +15,16 @@ class PlantSeeder extends Seeder
         DB::table('plants')->insert([
             [
                 'name' => 'Venus Flytrap',
-                'family' => 'Droseraceae',
+                'category_id'=> 1,
+
                 'image_url' => 'images/venus.jpg',
                 'price' => 120000,
                 'stock' => 25,
             ],
             [
                 'name' => 'Pitcher Plant',
-                'family' => 'Nepenthaceae',
+                'category_id'=> 2,
+
                 'image_url' => 'images/pitcher.jpg',
                 'price' => 180000,
                 'stock' => 18,
@@ -30,7 +32,8 @@ class PlantSeeder extends Seeder
             ],
             [
                 'name' => 'Sundew',
-                'family' => 'Droseraceae',
+                'category_id'=> 1,
+
                 'image_url' => 'images/sundew.jpg',
                 'price' => 95000,
                 'stock' => 32,
@@ -38,14 +41,16 @@ class PlantSeeder extends Seeder
             ],
             [
                 'name' => 'Cobra Lily',
-                'family' => 'Sarraceniaceae',
+                'category_id'=> 3,
+
                 'image_url' => 'images/cobra.jpg',
                 'price' => 210000,
-                'stock' => 12,
+                'stock' => 0,
              ],
             [
                 'name' => 'Butterwort',
-                'family' => 'Lentibulariaceae',
+                'category_id'=> 4,
+
                 'image_url' => 'images/butterwort.jpg',
                 'price' => 85000,
                 'stock' => 40,
