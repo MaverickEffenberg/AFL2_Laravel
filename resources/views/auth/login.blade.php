@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout', ['login' => $title])
 
 @section('content')
 <div class="container py-5">
