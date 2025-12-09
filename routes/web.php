@@ -26,6 +26,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [PlantController::class, 'home'])->name('home'); //homepage
 Route::get('/about', [PageController::class, 'about'])->name('about'); //about us page
+Route::get('/profile', [PageController::class, 'profile'])->name('profile'); //user profile page
 Route::get('/store', [PlantController::class, 'shop'])->name('store'); //store page
 Route::get('/guide', [GuideController::class, 'index'])->name('guide'); //guide page
 

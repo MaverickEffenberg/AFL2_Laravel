@@ -19,4 +19,10 @@ class PageController extends Controller
             'title' => 'About Us'
         ]);
     }
+    public function profile()
+    {
+        return view('profile', [
+            'title' => 'Profile'
+        ]);
+    }
 }
