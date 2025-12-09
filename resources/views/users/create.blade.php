@@ -24,7 +24,13 @@
             <option value="admin" {{ old('role')=='admin' ? 'selected' : '' }}>Admin</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-success">Save</button>
+
+    <!-- FIX: disable double submit -->
+    <button type="submit" class="btn btn-success"
+            onclick="this.disabled=true; this.form.submit();">
+        Save
+    </button>
+
     <a href="{{ route('users.index') }}" class="btn btn-secondary">Back</a>
 </form>
 @endsection
