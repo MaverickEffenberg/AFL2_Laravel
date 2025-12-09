@@ -11,7 +11,7 @@
         <ul class="navbar-nav ml-auto">
 
             @guest
-                <li class="nav-item mr-2">
+                <li class="nav-item mr-2 d-flex align-items-center">
                     <a class="btn btn-primary btn-sm" href="{{ route('login') }}">Login</a>
                 </li>
             @else

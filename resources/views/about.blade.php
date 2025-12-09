@@ -79,7 +79,7 @@ echo $response;
   <hr>
   <h5>Meet the Team</h5>
   <div class="row">
-    <div class="rounded-circle mb-2 mx-auto" style="width:200px;">
+    <div class="rounded-circle mb-2 mx-auto" style="width:300px;">
       <img src="{{ asset('images/Maverick.jpeg') }}" 
           class="rounded-circle img-fluid mb-2"
           style="aspect-ratio: 1/1; object-fit: cover;" 
@@ -87,15 +87,13 @@ echo $response;
       <h6>Maverick</h6>
       <p class="text-muted small">Founder & Grower</p>
     </div>
-    <div class="rounded-circle mb-2 mx-auto" style="width:200px;">
+    <div class="rounded-circle mb-2 mx-auto" style="width:300px;">
       <img src="{{ asset('images/Jermy.jpeg') }}" 
           class="rounded-circle img-fluid mb-2"
           style="aspect-ratio: 1/1; object-fit: cover;" 
           alt="Team member">
       <h6>Jermy</h6>
       <p class="text-muted small">Customer Support</p>
-    </div>
-    </div>
     </div>
   </div>
 </main>
