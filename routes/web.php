@@ -30,7 +30,7 @@ Route::get('/profile', [PageController::class, 'profile'])->name('profile'); //u
 Route::get('/store', [PlantController::class, 'shop'])->name('store'); //store page
 Route::get('/guide', [GuideController::class, 'index'])->name('guide'); //guide page
 Route::get('/signup', function () {
-    return view('signup', ['title' => 'Signup']);
+    return view('auth.signup', ['title' => 'Signup']);
 });
 
 Route::post('/signup', [AuthController::class, 'signupStore']);
