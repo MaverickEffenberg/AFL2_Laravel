@@ -1,0 +1,9 @@
+
+      :root { --brand:#2b7a4b; --accent:#c0392b }
+      .brand { color:var(--brand); font-weight:700 }
+      .hero { background:linear-gradient(180deg,rgba(43,122,75,0.08),transparent) }
+      .product-card img { height:180px; object-fit:cover }
+      footer { background:#f8f9fa }
+      body { margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
+      main { flex: 1; }
+    
