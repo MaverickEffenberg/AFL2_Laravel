@@ -35,15 +35,14 @@
                 <p><strong>ID:</strong> {{ $user->id }}</p>
                 <p><strong>Name:</strong> {{ $user->name }}</p>
                 <p><strong>Email:</strong> {{ $user->email }}</p>
-
-                
+                {{-- Add more if your users table has them, e.g. phone, address --}}
                 @if (!empty($user->phone))
                     <p><strong>Phone:</strong> {{ $user->phone }}</p>
                 @endif
             </div>
         </div>
 
-        
+        {{-- UPDATE PROFILE (UPDATE = "U" from CRUD) --}}
         <div class="card mb-4">
             <div class="card-header">
                 Edit Profile
@@ -83,7 +82,7 @@
                         @enderror
                     </div>
 
-                    
+                    {{-- Optional extra fields if you have them in users table --}}
                     @if (Schema::hasColumn('users', 'phone'))
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
@@ -107,7 +106,7 @@
             </div>
         </div>
 
-        
+        {{-- OPTIONAL: CHANGE PASSWORD --}}
         <div class="card mb-4">
             <div class="card-header">
                 Change Password
@@ -163,19 +162,7 @@
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-header">
-                Add/Remove/Change Address
-            </div>
-        <div>
-            <button type="submit" class="btn btn-primary">
-                        Add Address
-                    </button>
-        </div>
-               
-                
-        </div>
-
+        {{-- DELETE ACCOUNT (D from CRUD) --}}
         <div class="card mb-4">
             <div class="card-header text-danger">
                 Delete Account

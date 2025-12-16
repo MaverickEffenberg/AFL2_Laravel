@@ -26,4 +26,14 @@ class PageController extends Controller
         ]);
         
     }
+
+    public function blog()
+    {
+        $blogs = \App\Models\Blog::latest()->paginate(10);
+
+        return view('blog', [
+            'title' => 'Blog',
+            'blogs' => $blogs,
+        ]);
+    }
 }

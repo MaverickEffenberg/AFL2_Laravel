@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // ---------------------
-// ADMIN PAGE (FIXED) TEST
+// ADMIN PAGE (FIXED)
 // ---------------------
 Route::get('/admin', function () {
     $user = Auth::user();
@@ -41,14 +41,16 @@ Route::post('/signup', [AuthController::class, 'signupStore']);
 // PUBLIC PAGES
 // ---------------------
 Route::get('/', [PlantController::class, 'home'])->name('home');
-Route::view('/about', 'about', [
-    'title' => 'About Us'
-])->name('about');
-Route::view('/blog', 'blog', [
-    'title' => 'Blog'
-])->name('about');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
-Route::view('/profile', 'profile')->name('profile');
+// Blog CRUD routes (admin-only for write actions)
+Route::middleware(['auth', \App\Http\Middleware\CheckIfAdmin::class])->group(function () {
+    Route::post('/blog', [\App\Http\Controllers\BlogController::class, 'store'])->name('blogs.store');
+    Route::put('/blog/{blog}', [\App\Http\Controllers\BlogController::class, 'update'])->name('blogs.update');
+    Route::delete('/blog/{blog}', [\App\Http\Controllers\BlogController::class, 'destroy'])->name('blogs.destroy');
+});
+Route::get('/profile', [PageController::class, 'profile'])->name('profile');
 Route::get('/store', [PlantController::class, 'shop'])->name('store');
 Route::get('/guide', [GuideController::class, 'index'])->name('guide');
 
