@@ -1,6 +1,6 @@
 @extends('layouts.layout', ['title' => $title])
 
-@php use Illuminate\Support\Str; @endphp
+@php use Illuminate\Support\Str; use Illuminate\Support\Facades\Storage; @endphp
 
 @section('content')
 <div class="container py-4">
@@ -48,6 +48,8 @@
 				<div class="card-body">
 				@if($blog->image_url)
 					<img src="{{ asset($blog->image_url) }}" class="img-fluid mb-3" alt="{{ $blog->title }}">
+				@elseif(!empty($blog->image))
+					<img src="{{ Storage::url($blog->image) }}" class="img-fluid mb-3" alt="{{ $blog->title }}">
 				@endif
 				<h3>{{ $blog->title }}</h3>
 				<p class="text-muted">By {{ optional($blog->user)->name ?? 'Unknown' }} • {{ $blog->created_at->format('M d, Y') }}</p>
