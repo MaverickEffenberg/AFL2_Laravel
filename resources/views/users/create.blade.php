@@ -18,6 +18,10 @@
         <input type="password" name="password" class="form-control">
     </div>
     <div class="mb-3">
+        <label>Confirm Password:</label>
+        <input type="password" name="password_confirmation" class="form-control">
+    </div>
+    <div class="mb-3">
         <label>Role:</label>
         <select name="role" class="form-control">
             <option value="user" {{ old('role')=='user' ? 'selected' : '' }}>User</option>
@@ -25,7 +29,6 @@
         </select>
     </div>
 
-    <!-- FIX: disable double submit -->
     <button type="submit" class="btn btn-success"
             onclick="this.disabled=true; this.form.submit();">
         Save
