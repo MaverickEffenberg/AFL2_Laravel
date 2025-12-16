@@ -29,7 +29,17 @@
           <img src="{{ $plant->image_url }}" class="card-img-top" alt="{{ $plant->name }}">
           <div class="card-body">
             <h5 class="card-title">{{ $plant->name }}</h5>
-            <p class="text-muted">Rp {{ $plant->price }}</p>
+            @if(method_exists($plant, 'currentPromotion') && $plant->currentPromotion())
+                <span class="badge bg-danger mb-2">{{ (int)$plant->currentPromotion()->discount_percentage }}% OFF</span>
+            @endif
+            @if(isset($plant->current_price) && $plant->current_price != $plant->price)
+              <p class="mb-1">
+                <small class="text-muted"><del>Rp {{ number_format($plant->price,0,',','.') }}</del></small>
+                <span class="ml-2 text-danger">Rp {{ number_format($plant->current_price,0,',','.') }}</span>
+              </p>
+            @else
+              <p class="mb-1"><span class="text-muted">Rp {{ number_format($plant->price,0,',','.') }}</span></p>
+            @endif
             <p class="text-muted">Stock: {{ $plant->stock }}</p>
             <a href="#"
                class="btn btn-sm {{ $plant->stock > 0 ? 'btn-success' : 'btn-secondary disabled' }}"

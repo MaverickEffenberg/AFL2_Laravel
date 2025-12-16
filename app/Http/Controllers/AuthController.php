@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Promotion;
 
 class AuthController extends Controller
 {
@@ -47,6 +48,17 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['password'], $user->password)) {
             // Login user
             Auth::login($user);
+
+            // Flash promotion popup for non-admin users
+            if ($user->role !== 'admin') {
+                $promo = Promotion::with('plant')->active()->orderByDesc('discount_percentage')->first();
+                if ($promo) {
+                    $request->session()->flash('promotion_popup', [
+                        'title' => $promo->title ?? ($promo->plant->name . ' Promotion'),
+                        'description' => $promo->description ?? ($promo->discount_percentage . "% off " . ($promo->plant->name ?? 'selected items')),
+                    ]);
+                }
+            }
 
             // Redirect based on role
             if ($user->role === 'admin') {

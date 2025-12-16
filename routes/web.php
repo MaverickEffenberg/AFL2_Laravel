@@ -61,6 +61,8 @@ Route::get('/guide', [GuideController::class, 'index'])->name('guide');
 Route::resource('categories', CategoryController::class);
 Route::resource('plants', PlantController::class);
 Route::resource('users', UserController::class);
+// Promotions CRUD
+Route::resource('promotions', \App\Http\Controllers\PromotionController::class);
 
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
 

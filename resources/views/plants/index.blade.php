@@ -26,7 +26,14 @@
             <td>{{ $plant->category->name }}</td>
             <td><img src="{{ $plant->image_url }}" alt="{{ $plant->name }}" width="80"></td>
             <td>{{ $plant->stock }}</td>
-            <td>{{ $plant->price }}</td>
+            <td>
+                @if(method_exists($plant, 'currentPromotion') && $plant->currentPromotion())
+                    <div><small class="text-muted"><del>Rp {{ number_format($plant->price,0,',','.') }}</del></small></div>
+                    <div class="text-danger">Rp {{ number_format($plant->current_price,0,',','.') }}</div>
+                @else
+                    Rp {{ number_format($plant->price,0,',','.') }}
+                @endif
+            </td>
             <td>
                 <a href="{{ route('plants.show', $plant->id) }}" class="btn btn-info btn-sm">View</a>
                 <a href="{{ route('plants.edit', $plant->id) }}" class="btn btn-warning btn-sm">Edit</a>

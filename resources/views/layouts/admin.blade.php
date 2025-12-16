@@ -22,6 +22,9 @@
                     <a class="nav-link" href="{{ route('plants.index') }}">Plants</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('promotions.index') }}">Promotions</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('sales.index') }}">Sales</a>
                 </li>
                 <li class="nav-item mr-2">
