@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // ---------------------
-// ADMIN PAGE (FIXED)
+// ADMIN PAGE (FIXED) TEST
 // ---------------------
 Route::get('/admin', function () {
     $user = Auth::user();
