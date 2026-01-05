@@ -25,10 +25,6 @@ return new class extends Migration
 
         $table->string('name');
 
-        $table->foreignId('category_id')
-            ->constrained('categories')
-            ->cascadeOnDelete();
-
         $table->timestamps(); // created_at + updated_at
     });
 }

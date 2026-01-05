@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container py-5">
+  @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
+
 <h2 class="mb-4">Store</h2>
 
 <form method="GET" action="{{ url('/store') }}" class="mb-4">
@@ -42,10 +48,24 @@ value="{{ $search ?? '' }}">
               <p class="mb-1"><span class="text-muted">Rp {{ number_format($plant->price,0,',','.') }}</span></p>
             @endif
 <p class="text-muted">Stock: {{ $plant->stock }}</p>
-<a href="#"
-class="btn btn-sm {{ $plant->stock > 0 ? 'btn-success' : 'btn-secondary disabled' }}"
-{{ $plant->stock == 0 ? 'aria-disabled=true tabindex=-1' : '' }}>
-Buy
+<div class="d-flex justify-content-between align-items-center">
+    <!-- Buy Button -->
+    <a href="#"
+       class="btn btn-sm {{ $plant->stock > 0 ? 'btn-success' : 'btn-secondary disabled' }}"
+       {{ $plant->stock == 0 ? 'aria-disabled=true tabindex=-1' : '' }}>
+       Buy
+    </a>
+
+    <!-- Add to Wishlist Button -->
+    <form action="{{ route('wishlist.store') }}" method="POST" class="d-inline">
+        @csrf
+        <input type="hidden" name="plant_id" value="{{ $plant->id }}">
+        <button type="submit" class="btn btn-sm btn-outline-danger">
+            ❤️ Wishlist
+        </button>
+    </form>
+</div>
+
 </a>
 </div>
 </div>

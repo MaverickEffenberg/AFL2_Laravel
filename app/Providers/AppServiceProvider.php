@@ -3,16 +3,18 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\TransactionRepositoryInterface;
+use App\Repositories\TransactionRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-        //
-    }
+    public function register()
+{
+    $this->app->bind(TransactionRepositoryInterface::class, TransactionRepository::class);
+}
 
     /**
      * Bootstrap any application services.
