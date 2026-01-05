@@ -7,6 +7,7 @@ use App\Http\Controllers\GuideController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,8 +62,12 @@ Route::get('/guide', [GuideController::class, 'index'])->name('guide');
 Route::resource('categories', CategoryController::class);
 Route::resource('plants', PlantController::class);
 Route::resource('users', UserController::class);
+Route::resource('promotions', PromotionController::class);
 
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
+
+// Promotions CRUD
+Route::resource('promotions', \App\Http\Controllers\PromotionController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])
@@ -77,3 +82,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [\App\Http\Controllers\ProfileController::class, 'destroy'])
         ->name('profile.destroy');
 });
+
+Route::get('/location', [App\Http\Controllers\RajaOngkirController::class, 'index']); // Route untuk menampilkan daftar provinsi
+Route::get('/cities/{provinceId}', [App\Http\Controllers\RajaOngkirController::class, 'getCities']); // Route untuk mengambil data kota berdasarkan ID provinsi
+Route::get('/districts/{cityId}', [App\Http\Controllers\RajaOngkirController::class, 'getDistricts']); // Route untuk mengambil data kecamatan berdasarkan ID kota
+Route::post('/check-ongkir', [App\Http\Controllers\RajaOngkirController::class, 'checkOngkir']); // Route untuk mengecek ongkir
+
+Route::get('/location', [App\Http\Controllers\RajaOngkirController::class, 'index'])->name('location'); // Route untuk menampilkan daftar provinsi
+Route::get('/cities/{provinceId}', [App\Http\Controllers\RajaOngkirController::class, 'getCities']); // Route untuk mengambil data kota berdasarkan ID provinsi
+Route::get('/districts/{cityId}', [App\Http\Controllers\RajaOngkirController::class, 'getDistricts']); // Route untuk mengambil data kecamatan berdasarkan ID kota
+Route::post('/check-ongkir', [App\Http\Controllers\RajaOngkirController::class, 'checkOngkir']); // Route untuk mengecek ongkir

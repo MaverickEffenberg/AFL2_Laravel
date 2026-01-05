@@ -15,8 +15,10 @@ class PlantController extends Controller
 
         if ($search) {
             $plants = Plant::where('name', 'like', "%{$search}%")->get();
+            $plants = Plant::with('promotions')->where('name', 'like', "%{$search}%")->get();
         } else {
             $plants = Plant::all();
+            $plants = Plant::with('promotions')->get();
         }
 
         return view('store', compact('plants', 'search'))->with('title', 'Store');
@@ -25,12 +27,14 @@ class PlantController extends Controller
     public function home()
     {
         $plants = Plant::all();
+        $plants = Plant::with('promotions')->get();
         return view('home', compact('plants'));
     }
 
     public function index()
     {
         $plants = Plant::with('category')->get();
+        $plants = Plant::with(['category', 'promotions'])->get();
         return view('plants.index', compact('plants'));
     }
 

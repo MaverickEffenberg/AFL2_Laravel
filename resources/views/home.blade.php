@@ -19,7 +19,7 @@
         </div>
         <div class="row">
 
-          
+
 
           @foreach ($plants->take(3) as $plant)
           <div class="col-md-4 mb-4">
@@ -27,17 +27,26 @@
               <img src="{{asset ($plant->image_url)   }}" class="card-img-top" alt="{{ $plant->name }}">
               <div class="card-body">
                 <h5 class="card-title">{{ $plant->name }}</h5>
+                @if(method_exists($plant, 'currentPromotion') && $plant->currentPromotion())
+                    <span class="badge badge-danger mb-2">{{ (int)$plant->currentPromotion()->discount_percentage }}% OFF</span>
+                @endif
                 <p class="card-text">Iconic and fascinating — great for beginners.</p>
+                <p class="mb-2">
+                  @if(isset($plant->current_price) && $plant->current_price != $plant->price)
+                    <small class="text-muted"><del>Rp {{ number_format($plant->price,0,',','.') }}</del></small>
+                    <span class="ml-2 text-danger">Rp {{ number_format($plant->current_price,0,',','.') }}</span>
+                  @else
+                    <span class="text-muted">Rp {{ number_format($plant->price,0,',','.') }}</span>
+                  @endif
+                </p>
                 <a href="store" class="btn btn-sm btn-success">Buy</a>
               </div>
             </div>
           </div>
-    
+
 @endforeach
 
         </div>
       </div>
     </section>
 @endsection
-
-   
