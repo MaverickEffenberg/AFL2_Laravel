@@ -9,4 +9,15 @@ class Address extends Model
 {
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'province',
+        'city',
+        'subdistrict',
+        'street_address',
+        'user_id',
+    ];
+
+    // Migration for addresses didn't include timestamps, disable them on the model
+    public $timestamps = false;
 }
