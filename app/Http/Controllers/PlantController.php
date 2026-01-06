@@ -18,6 +18,8 @@ class PlantController extends Controller
             $plants = Plant::with('promotions')->where('name', 'like', "%{$search}%")->get();
         } else {
             $plants = Plant::all();
+            $plants = Plant::with('promotions')->where('name', 'like', "%{$search}%")->get();
+        } else {
             $plants = Plant::with('promotions')->get();
         }
 

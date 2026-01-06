@@ -89,3 +89,4 @@ class PromotionController extends Controller
         return redirect()->route('promotions.index')->with('success', 'Promotion deleted.');
     }
 }
+}

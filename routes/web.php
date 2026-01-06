@@ -70,6 +70,8 @@ Route::resource('categories', CategoryController::class);
 Route::resource('plants', PlantController::class);
 Route::resource('users', UserController::class);
 Route::resource('promotions', PromotionController::class);
+// Promotions CRUD
+Route::resource('promotions', \App\Http\Controllers\PromotionController::class);
 
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
 
