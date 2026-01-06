@@ -39,7 +39,6 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/profile') }}">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/wishlist') }}">Wishlist</a></li>
         </ul>
     </div>
 </nav>

@@ -2,19 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wishlist extends Model
+class wishlist extends Model
 {
-    protected $fillable = ['user_id', 'plant_id'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function plant()
-    {
-        return $this->belongsTo(Plant::class);
-    }
+    /** @use HasFactory<\Database\Factories\WishlistFactory> */
+    use HasFactory;
 }

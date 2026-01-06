@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +25,8 @@ class BlogController extends Controller
 
         $data['user_id'] = Auth::id();
 
+        // Ensure category_id exists to satisfy NOT NULL constraint in DB
+        $data['category_id'] = $request->input('category_id', Category::first()?->id ?? 1);
 
         // set published_at automatically when created
         $data['published_at'] = now();
@@ -48,7 +50,7 @@ class BlogController extends Controller
             'image' => 'nullable|image|max:2048',
         ]);
 
- 
+        $data['category_id'] = $request->input('category_id', $blog->category_id ?? Category::first()?->id ?? 1);
 
         // Handle image replacement
         if ($request->hasFile('image')) {
