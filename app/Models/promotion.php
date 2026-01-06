@@ -68,3 +68,4 @@ class Promotion extends Model
         );
     }
 }
+}

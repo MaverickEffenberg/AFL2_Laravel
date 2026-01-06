@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        {{-- UPDATE PROFILE (UPDATE = "U" from CRUD) --}}
+        {{-- UPDATE PROFILE--}}
         <div class="card mb-4">
             <div class="card-header">
                 Edit Profile
@@ -82,22 +82,7 @@
                         @enderror
                     </div>
 
-                    {{-- Optional extra fields if you have them in users table --}}
-                    @if (Schema::hasColumn('users', 'phone'))
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input
-                                type="text"
-                                id="phone"
-                                name="phone"
-                                class="form-control @error('phone') is-invalid @enderror"
-                                value="{{ old('phone', $user->phone) }}"
-                            >
-                            @error('phone')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    @endif
+                 
 
                     <button type="submit" class="btn btn-primary">
                         Update Profile
@@ -106,7 +91,7 @@
             </div>
         </div>
 
-        {{-- OPTIONAL: CHANGE PASSWORD --}}
+        <!-- CHANGE PASSWORD -->
         <div class="card mb-4">
             <div class="card-header">
                 Change Password
@@ -162,6 +147,20 @@
             </div>
         </div>
 
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                Location Settings
+            </div>
+            <div class="card-body">
+                <button onclick="window.location='{{ route('location') }}'" class="btn btn-primary">
+    Address Setting
+</button>
+            </div>
+        </div>
+        
+        
+        
         {{-- DELETE ACCOUNT (D from CRUD) --}}
         <div class="card mb-4">
             <div class="card-header text-danger">
@@ -181,5 +180,6 @@
                 </form>
             </div>
         </div>
+
     </div>
 @endsection

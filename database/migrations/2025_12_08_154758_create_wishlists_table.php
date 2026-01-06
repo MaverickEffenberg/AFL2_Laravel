@@ -9,15 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('wishlists', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users', 'id')->onDelete('cascade');
-            $table->foreignId('plant_id')->constrained('plants', 'id')->onDelete('cascade');
-            $table->timestamps('created_at');
-        });
-    }
+public function up(): void
+{
+    Schema::create('wishlists', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        $table->foreignId('plant_id')->constrained()->onDelete('cascade');
+        $table->timestamps();
+
+        $table->unique(['user_id', 'plant_id']); // prevent duplicates
+    });
+}
+
 
     /**
      * Reverse the migrations.

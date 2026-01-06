@@ -19,7 +19,7 @@
         </div>
         <div class="row">
 
-          
+
 
           @foreach ($plants->take(3) as $plant)
           <div class="col-md-4 mb-4">
@@ -43,12 +43,10 @@
               </div>
             </div>
           </div>
-    
+
 @endforeach
 
         </div>
       </div>
     </section>
 @endsection
-
-   

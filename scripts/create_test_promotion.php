@@ -30,3 +30,4 @@ if ($promo) {
 } else {
     echo "Failed to create promotion.\n";
 }
+}
