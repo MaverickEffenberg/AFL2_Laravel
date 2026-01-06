@@ -10,22 +10,25 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps('created_at');
-            $table->text('content');
-            $table->string('title');
-            $table->string('image_url');
-            $table->foreignId('user_id')
-          ->nullable()
-          ->constrained('users', 'id')
-          ->nullOnDelete();
-          $table->string('name'); 
-          $table->foreignId('category_id')->constrained('categories', 'id')->onDelete('cascade');
-        });
-       
-    }
+{
+    Schema::create('blogs', function (Blueprint $table) {
+        $table->id();
+
+        $table->string('title');
+        $table->text('content'); // HTML from rich text editor
+        $table->string('image_url')->nullable();
+
+        $table->foreignId('user_id')
+            ->nullable()
+            ->constrained('users')
+            ->nullOnDelete();
+
+        $table->string('name');
+
+        $table->timestamps(); // created_at + updated_at
+    });
+}
+
 
     /**
      * Reverse the migrations.
