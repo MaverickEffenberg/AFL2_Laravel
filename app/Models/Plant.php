@@ -51,8 +51,4 @@ class Plant extends Model
 
         return $this->price;
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

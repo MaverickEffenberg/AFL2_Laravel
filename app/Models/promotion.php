@@ -67,8 +67,4 @@ class Promotion extends Model
             $price * (1 - ($this->discount_percentage / 100))
         );
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
