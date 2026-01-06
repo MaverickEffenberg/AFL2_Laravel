@@ -27,6 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('sales.index') }}">Sales</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('addresses.index') }}">Addresses</a>
+                </li>
                 <li class="nav-item mr-2">
                 <a class="btn btn-primary btn-sm" href="{{ route('home') }}">Homepage</a>
                 </li>

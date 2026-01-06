@@ -18,6 +18,9 @@ class Address extends Model
         'user_id',
     ];
 
-    // Migration for addresses didn't include timestamps, disable them on the model
-    public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

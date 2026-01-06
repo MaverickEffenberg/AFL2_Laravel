@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AddressController;
 // ---------------------
 // ADMIN PAGE (FIXED)
 // ---------------------
@@ -24,6 +25,10 @@ Route::get('/admin', function () {
 
     return redirect()->route('home');
 })->middleware('auth')->name('admin');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/addresses', [AddressController::class, 'index'])->name('addresses.index');
+});
 
 
 // ---------------------
