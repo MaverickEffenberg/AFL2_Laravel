@@ -52,4 +52,3 @@ class Plant extends Model
         return $this->price;
     }
 }
-}

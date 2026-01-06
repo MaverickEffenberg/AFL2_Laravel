@@ -36,9 +36,12 @@ class ProfileController extends Controller
         $user->name  = $validated['name'];
         $user->email = $validated['email'];
 
-        
+        // if you have more fields:
+        // if ($request->has('phone')) {
+        //     $user->phone = $request->input('phone');
+        // }
 
-
+        $user->save();
 
         return redirect()
             ->route('profile.edit')
@@ -58,7 +61,7 @@ class ProfileController extends Controller
         ]);
 
         $user->password = Hash::make($validated['password']);
-
+        $user->save();
 
         return redirect()
             ->route('profile.edit')
@@ -74,7 +77,7 @@ class ProfileController extends Controller
 
     Auth::logout();
 
-
+    $user->delete(); 
 
     $request->session()->invalidate();
     $request->session()->regenerateToken();
