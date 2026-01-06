@@ -21,8 +21,8 @@
                 <td>{{ $p->id }}</td>
                 <td>{{ $p->plant->name ?? '—' }}</td>
                 <td>{{ $p->discount_percentage }}</td>
-                <td>{{ $p->start_at }}</td>
-                <td>{{ $p->end_at }}</td>
+                <td>{{ \Carbon\Carbon::parse($p->start_at)->addHours(7)->format('Y-m-d H:i') }}</td>
+                <td>{{ \Carbon\Carbon::parse($p->end_at)->addHours(7)->format('Y-m-d H:i') }}</td>
                 <td>{{ $p->isActive() ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('promotions.show', $p->id) }}" class="btn btn-info btn-sm">View</a>

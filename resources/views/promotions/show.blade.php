@@ -6,8 +6,14 @@
 <p><strong>ID:</strong> {{ $promotion->id }}</p>
 <p><strong>Plant:</strong> {{ $promotion->plant->name ?? '—' }}</p>
 <p><strong>Discount:</strong> {{ $promotion->discount_percentage }}%</p>
-<p><strong>Start:</strong> {{ $promotion->start_at }}</p>
-<p><strong>End:</strong> {{ $promotion->end_at }}</p>
+<p><strong>Start:</strong>
+    {{ \Carbon\Carbon::parse($promotion->start_at)->addHours(7)->format('Y-m-d H:i') }}
+</p>
+
+<p><strong>End:</strong>
+    {{ \Carbon\Carbon::parse($promotion->end_at)->addHours(7)->format('Y-m-d H:i') }}
+</p>
+
 <p><strong>Active:</strong> {{ $promotion->isActive() ? 'Yes' : 'No' }}</p>
 <p><strong>Title:</strong> {{ $promotion->title }}</p>
 <p><strong>Description:</strong> {{ $promotion->description }}</p>

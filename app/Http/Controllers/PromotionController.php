@@ -29,22 +29,29 @@ class PromotionController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'plant_id' => 'required|exists:plants,id',
-            'discount_percentage' => 'required|numeric|min:0|max:100',
-            'start_at' => 'required|date',
-            'end_at' => 'required|date|after_or_equal:start_at',
-            'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-        ]);
+        $data = $request->validate(
+            [
+                'plant_id' => 'required|exists:plants,id',
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'discount_percentage' => 'required|numeric|min:0|max:100',
+                'start_at' => 'required|date',
+                'end_at' => 'required|date|after_or_equal:start_at',
+            ],
+            [
+                'title.required' => 'Title is required.',
+                'description.required' => 'Description is required.',
+            ]
+        );
 
-        // Normalize dates with Carbon; accept datetime-local or ISO strings
-        $data['start_at'] = Carbon::parse($request->input('start_at'));
-        $data['end_at'] = Carbon::parse($request->input('end_at'));
+            $data['start_at'] = Carbon::parse($request->start_at)->subHours(7);
+            $data['end_at']   = Carbon::parse($request->end_at)->subHours(7);
 
         Promotion::create($data);
 
-        return redirect()->route('promotions.index')->with('success', 'Promotion created.');
+        return redirect()
+            ->route('promotions.index')
+            ->with('success', 'Promotion created successfully.');
     }
 
     public function show($id)
@@ -57,6 +64,7 @@ class PromotionController extends Controller
     {
         $promotion = Promotion::findOrFail($id);
         $plants = Plant::all();
+
         return view('promotions.edit', compact('promotion', 'plants'));
     }
 
@@ -64,28 +72,33 @@ class PromotionController extends Controller
     {
         $promotion = Promotion::findOrFail($id);
 
-        $data = $request->validate([
-            'plant_id' => 'required|exists:plants,id',
-            'discount_percentage' => 'required|numeric|min:0|max:100',
-            'start_at' => 'required|date',
-            'end_at' => 'required|date|after_or_equal:start_at',
-            'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-        ]);
+        $data = $request->validate(
+            [
+                'plant_id' => 'required|exists:plants,id',
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'discount_percentage' => 'required|numeric|min:0|max:100',
+                'start_at' => 'required|date',
+                'end_at' => 'required|date|after_or_equal:start_at',
+            ]
+        );
 
-        $data['start_at'] = Carbon::parse($request->input('start_at'));
-        $data['end_at'] = Carbon::parse($request->input('end_at'));
+        $data['start_at'] = Carbon::parse($request->start_at);
+        $data['end_at'] = Carbon::parse($request->end_at);
 
         $promotion->update($data);
 
-        return redirect()->route('promotions.index')->with('success', 'Promotion updated.');
+        return redirect()
+            ->route('promotions.index')
+            ->with('success', 'Promotion updated successfully.');
     }
 
     public function destroy($id)
     {
-        $promotion = Promotion::findOrFail($id);
-        $promotion->delete();
+        Promotion::findOrFail($id)->delete();
 
-        return redirect()->route('promotions.index')->with('success', 'Promotion deleted.');
+        return redirect()
+            ->route('promotions.index')
+            ->with('success', 'Promotion deleted successfully.');
     }
 }
