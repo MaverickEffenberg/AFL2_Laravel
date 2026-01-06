@@ -14,8 +14,15 @@ class PlantController extends Controller
         $search = $request->query('search');
 
         if ($search) {
+<<<<<<< Updated upstream
             $plants = Plant::with('promotions')->where('name', 'like', "%{$search}%")->get();
         } else {
+=======
+            $plants = Plant::where('name', 'like', "%{$search}%")->get();
+            $plants = Plant::with('promotions')->where('name', 'like', "%{$search}%")->get();
+        } else {
+            $plants = Plant::all();
+>>>>>>> Stashed changes
             $plants = Plant::with('promotions')->get();
         }
 
